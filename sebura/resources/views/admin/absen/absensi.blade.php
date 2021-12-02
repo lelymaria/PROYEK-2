@@ -7,7 +7,6 @@
 @include('layouts.topbar')
 @endsection
 @section('content')
-
 @if (session('success'))
 <div class="row">
     <div class="col-md-12">
@@ -17,24 +16,23 @@
     </div>
 </div>
 @endif
+
 <!-- Page Heading -->
 <div class="row">
     <div class="col-md-11">
-        <h1 class="h3 mb-2 text-gray-800">Data Kepengurusan</h1>
+        <h1 class="h3 mb-2 text-gray-800">-</h1>
     </div>
     <div class="col-md-1">
-        <a href="/admin/form_tambah_pengurus" class="btn btn-success">
+        <a href="/admin/acara/{{ $acara->id }}/tambah_absen" class="btn btn-success">
             Tambah
         </a>
     </div>
 </div>
 
-<br>
-
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Kepengurusan</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Absensi</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -44,33 +42,34 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Jabatan</th>
-                        <th>Prodi</th>
-                        <th>Tahun Kepengurusan</th>
-                        <th>Gambar</th>
+                        <th>Jurusan</th>
+                        <th>Ket Absensi</th>
+                        <th>Tanggal</th>
                         <th>Aksi</th>
 
                     </tr>
                 </thead>
+                <tfoot>
+                </tfoot>
+
                 <tbody>
-                    <?php $no = 0 ?>
-                    @foreach($datapengurus as $data)
+                    @foreach ($data_absensi as $no => $absen)
                     <tr>
-                        <td>{{ ++$no }}.</td>
-                        <td>{{ $data->nama }}</td>
-                        <td>{{ $data->getjabatan->nama_jabatan }} {{ $data->getdivisi->nama_divisi }}</td>
-                        <td>{{ $data->getprodi->nama_prodi}}</td>
-                        <td>{{ $data->tahun_kepengurusan }}</td>
-                        <td><img src="/storage/data_pengurus/{!! $data->gambar !!}" alt="{!! $data->nama !!}"
-                                class="img-responsive" width="75" title="{!! $data->nama !!}"></td>
+                        <td>{{ $no+1 }}</td>
+                        <td>{{ $absen->pengurus->nama }}</td>
+                        <td>{{ $absen->pengurus->getjabatan->nama_jabatan }}</td>
+                        <td>{{ $absen->pengurus->getprodi->nama_prodi}}</td>
+                        <td>{{ $absen->keterangan }}</td>
+                        <td>{{ $absen->created_at }}</td>
                         <td>
-                            <a href="/admin/{{ $data->id }}/form_edit_pengurus" class="btn btn-warning">
-                                Edit
-                            </a>
-                            <form action="/admin/hapus_kepengurusan" method="POST" style="display : inline;">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" value="{{ $data->id }}">
+                            <form method="POST" action="{{ url('deleteacara') }}/{{ $absen->id }}" class="d-inline">
+                                <a href="/admin/acara/{{ $absen->id }}/edit_absensi" class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
+                                @csrf
+                                @method('DELETE')
                                 <button onclick="return confirm('Yakin ? Ingin Menghapus Data Ini ?')" type="submit"
-                                    class="btn btn-danger">
+                                    class=" btn-danger btn-sm">
                                     Hapus
                                 </button>
                             </form>

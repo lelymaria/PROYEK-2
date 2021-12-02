@@ -16,13 +16,14 @@
     </div>
 </div>
 @endif
+
 <!-- Page Heading -->
 <div class="row">
     <div class="col-md-11">
-        <h1 class="h3 mb-2 text-gray-800">Data User</h1>
+        <h1 class="h3 mb-2 text-gray-800">Data Prodi</h1>
     </div>
     <div class="col-md-1">
-        <a href="/admin/tambahuser" class="btn btn-success">
+        <a href="/admin/tambahprodi" class="btn btn-success">
             Tambah
         </a>
     </div>
@@ -30,10 +31,9 @@
 
 <br>
 
-<!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables User</h6>
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Prodi</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -41,22 +41,23 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Username</th>
-                        <th>Role</th>
+                        <th>Nama Prodi</th>
                         <th>Aksi</th>
-
                     </tr>
                 </thead>
+
+                <tfoot>
+                </tfoot>
+
                 <tbody>
                     @php $no = 0 @endphp
-                    @foreach($data_user as $user)
+                    @foreach($data_prodi as $prodi)
                     <tr>
                         <td>{{ ++$no }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->roled->role_name }}</td>
+                        <td>{{ $prodi->nama_prodi }}</td>
                         <td class="d-flex">
-                            <form method="POST" action="{{ url('deleteuser') }}/{{ $user->id }}">
-                                <a href="{{ url('/admin/edituser') }}/{{ $user->id }}" class="btn btn-warning btn-sm">
+                            <form method="POST" action="{{ url('deleteprodi') }}/{{ $prodi->id }}">
+                                <a href="{{ url('/admin/editprodi') }}/{{ $prodi->id }}" class="btn btn-warning btn-sm">
                                     Edit
                                 </a>
                                 @csrf
@@ -70,6 +71,7 @@
                     </tr>
                     @endforeach
                 </tbody>
+
             </table>
         </div>
     </div>
@@ -80,5 +82,6 @@
 
 </div>
 <!-- End of Main Content -->
+
 
 @endsection

@@ -8,20 +8,21 @@ use App\Models\Login;
 
 class LoginController extends Controller
 {
-    public function admin()
-    {
-        echo "hay";
-    }
+    // public function admin()
+    // {
+    //     echo "hay";
+    // }
 
     public function login(Request $request){
-        $login = Login::where([
-            'username' => $request->username,
-            'password' => $request->password
-        ])->first();
+        $login = Login::where('username', $request->username)->first();
 
         if($login) {
-            Session::put('akun', $login);
-            return redirect('/admin');
+            if(password_verify($request->password, $login->password)){
+                Session::put('akun', $login);
+                return redirect('/admin');
+            } else {
+                return redirect()->back();
+            }
         } else {
             return redirect()->back();
         }
@@ -32,4 +33,21 @@ class LoginController extends Controller
         return redirect('/');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+        'username' => 'required',
+        'password' => "required",
+        'role'=> 'required'
+    ]);
+    Login::create($request->all());
+    return redirect()->back()->with('success','Post updated successfully');
+    }
+
+    public function destroy($id) {
+        Login::where("id", $id)->delete();
+
+        return redirect()->back()
+                        ->with('success',"<script>alert('Post deleted successfully')</script>");
+    }
 }

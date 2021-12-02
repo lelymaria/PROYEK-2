@@ -11,4 +11,7 @@ class Login extends Model
     protected $table = 'login';
     protected $guarded = ['id','created_at','update_at'];
 
+    public function roled(){
+        return $this->hasOne(Role::class, 'id', 'role');
+    }
 }

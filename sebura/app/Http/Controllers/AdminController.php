@@ -23,8 +23,11 @@ class AdminController extends Controller
         $data = [
         "data_user" => Login::all()
     ];
-
     return view('admin.datauser', $data);
+    }
+
+    public function tambahuser(){
+        return view('admin.tambahuser');
     }
 
     public function kepengurusan()

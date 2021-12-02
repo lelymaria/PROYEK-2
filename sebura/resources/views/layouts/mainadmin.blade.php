@@ -16,7 +16,7 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }} " rel="stylesheet">
 </head>
 <body id="page-top">
-     <!-- Page Wrapper -->
+    <!-- Page Wrapper -->
     <div id="wrapper">
 
 @yield('sidebar')
@@ -35,7 +35,6 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>     <br>
             <footer class="sticky-footer  bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
