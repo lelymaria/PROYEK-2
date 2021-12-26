@@ -17,9 +17,9 @@
             @csrf
             <input type="hidden" name="id" value="{{ $edit->id }}">
             <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Username</span>
-                <input type="text" name="username" class="form-control" aria-label="Sizing example input"
-                    aria-describedby="inputGroup-sizing-sm" value="{{ $edit->username }}">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+                <input type="text" name="email" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" value="{{ $edit->email }}">
             </div>
             <div class="input-group input-group-sm mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>

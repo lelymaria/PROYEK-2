@@ -16,6 +16,9 @@ class CreateDataPengurusesTable extends Migration
         Schema::create('data_penguruses', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->string('email');
+            $table->string('password');
+            $table->integer("role");
             $table->integer('jabatan');
             $table->integer('prodi');
             $table->integer('divisi_sebura');

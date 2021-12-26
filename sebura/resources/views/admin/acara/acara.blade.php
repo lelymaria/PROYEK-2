@@ -70,6 +70,8 @@
                                 </button>
                                 <a href="/admin/acara/{{ $acara->id }}/absensi" class="btn btn-info btn-sm">Lihat
                                     Absensi</a>
+                                <a href="/admin/acara/{{ $acara->id }}/panitia" class="btn btn-info btn-sm">Lihat
+                                    Panitia Acara</a>
                             </form>
                         </td>
                     </tr>

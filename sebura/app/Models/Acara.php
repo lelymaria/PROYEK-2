@@ -16,4 +16,9 @@ class Acara extends Model
     {
         return $this->hasMany(Absensi::class, 'id_acara', 'id');
     }
+
+    public function panitia()
+    {
+        return $this->hasMany(PanitiaAcara::class, 'id_acara', 'id');
+    }
 }

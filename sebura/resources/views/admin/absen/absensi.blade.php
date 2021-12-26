@@ -20,7 +20,7 @@
 <!-- Page Heading -->
 <div class="row">
     <div class="col-md-11">
-        <h1 class="h3 mb-2 text-gray-800">-</h1>
+        <h1 class="h3 mb-2 text-gray-800">Data Absensi</h1>
     </div>
     <div class="col-md-1">
         <a href="/admin/acara/{{ $acara->id }}/tambah_absen" class="btn btn-success">
@@ -64,13 +64,13 @@
                         <td>
                             <form method="POST" action="{{ url('deleteacara') }}/{{ $absen->id }}" class="d-inline">
                                 <a href="/admin/acara/{{ $absen->id }}/edit_absensi" class="btn btn-warning btn-sm">
-                                    Edit
+                                    <i style="font-size:24px" class="fa">&#xf044;</i>
                                 </a>
                                 @csrf
                                 @method('DELETE')
                                 <button onclick="return confirm('Yakin ? Ingin Menghapus Data Ini ?')" type="submit"
                                     class=" btn-danger btn-sm">
-                                    Hapus
+                                    <i style='font-size:24px' class='fas'>&#xf2ed;</i>
                                 </button>
                             </form>
                         </td>

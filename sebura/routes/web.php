@@ -4,6 +4,7 @@ use App\Http\Controllers\AcaraAbsensiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\LandingPengurusController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataPengurusController;
@@ -11,7 +12,10 @@ use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\OprecController;
 use App\Http\Controllers\AcaraController;
+use App\Http\Controllers\KeteranganPanitiaController;
+use App\Http\Controllers\PanitiaAcaraController;
 use App\Models\DataPengurus;
 use App\Models\Login;
 
@@ -33,7 +37,6 @@ Route::get('/home', [LandingPageController::class, "home"]);
 Route::get('/login', [LandingPageController::class, "login"]);
 Route::get('/visimisi', [LandingPageController::class, "visimisi"]);
 Route::get('/kepengurusan', [LandingPageController::class, "kepengurusan"]);
-Route::get('/chrodpage', [LandingPageController::class, "chrodpage"]);
 Route::get('/oprec', [LandingPageController::class, "oprec"]);
 Route::get('/pengenalandiv', [LandingPageController::class, "pengenalandiv"]);
 
@@ -44,7 +47,7 @@ Route::post('/tambahuser', [LoginController::class, "store"])->name('tambahuser'
 Route::delete('/deleteuser/{id}', [LoginController::class, "destroy"])->name('deleteuser');
 
 //Admin
-Route::get('/admin', [AdminController::class, "admin"]);
+Route::get('/admin', [AdminController::class, "admin"])->middleware('auth');
 Route::get('/admin/dashboard', [AdminController::class, "dashboard"]);
 Route::get('/admin/datauser', [AdminController::class, "datauser"]);
 Route::get('/admin/tambahuser', [AdminController::class, "tambahuser"]);
@@ -92,6 +95,13 @@ Route::delete("/deletejurusan/{id}", [JurusanController::class, "delete"]);
 Route::get("/admin/editjurusan/{id}", [JurusanController::class, "edit"]);
 Route::post("/admin/simpanjurusan", [JurusanController::class, "update"]);
 
+Route::get("/admin/ketpanitia", [KeteranganPanitiaController::class, "ketpanitia"]);
+Route::get("/admin/tambahketpanitia", [KeteranganPanitiaController::class, "tambahketpanitia"]);
+Route::post("/admin/tambahpan", [KeteranganPanitiaController::class, "tambahpan"]);
+Route::delete("/deleteketpanitia/{id}", [KeteranganPanitiaController::class, "delete"]);
+Route::get("/admin/editketpanitia/{id}", [KeteranganPanitiaController::class, "edit"]);
+Route::post("/admin/simpanketpanitia", [KeteranganPanitiaController::class, "update"]);
+
 Route::get("/admin/acara", [AcaraController::class, "daftaracara"]);
 Route::get("/admin/tambah_acara", [AcaraController::class, "tambahacara"]);
 Route::post("/admin/addacara", [AcaraController::class, "addacara"]);
@@ -101,7 +111,33 @@ Route::post("/admin/simpanacara", [AcaraController::class, "update"]);
 
 Route::get("/admin/acara/{acara}/absensi", [AcaraAbsensiController::class, "absensi"]);
 Route::get("/admin/acara/{acara}/tambah_absen", [AcaraAbsensiController::class, "tambah"]);
-Route::post("/admin/acara/{id}/absensi", [AcaraAbsensiController::class, "lihatabsensi"]);
+Route::post("/admin/acara/{acara}/absensi", [AcaraAbsensiController::class, "simpan"]);
 Route::delete("/deleteacara/{id}", [AcaraAbsensiController::class, "hapus"]);
-Route::get("/admin/acara/{acara}/edit_absensi", [AcaraAbsensiController::class, "edit"]);
-Route::get("/admin/simpanabsen", [AcaraAbsensiController::class, "update"]);
+Route::get("/admin/acara/{id}/edit_absensi", [AcaraAbsensiController::class, "edit"]);
+Route::post("/admin/simpanabsen", [AcaraAbsensiController::class, "update"]);
+
+Route::get("/admin/acara/{acara}/panitia", [PanitiaAcaraController::class, "daftarpanitia"]);
+Route::get("/admin/acara/{acara}/tambah_panitia", [PanitiaAcaraController::class, "tambah"]);
+Route::post("/admin/acara/{acara}/panitia", [PanitiaAcaraController::class, "simpan"]);
+Route::delete("/deletepanitia/{id}", [PanitiaAcaraController::class, "hapus"]);
+Route::get("/admin/acara/{id}/edit_panitia", [PanitiaAcaraController::class, "edit"]);
+Route::post("/admin/simpanpanitia", [PanitiaAcaraController::class, "update"]);
+Route::post("/admin/finalpanitia/{id}", [PanitiaAcaraController::class, "final"]);
+
+Route::post('/tambah/oprec', [OprecController::class, "tambahOprec"]);
+Route::get('test', [OprecController::class, "test"]);
+Route::post('/oprecditerima/{id}/{no_telp}', [OprecController::class, "diterima"]);
+Route::post('/oprecditolak/{id}/{no_telp}', [OprecController::class, "ditolak"]);
+Route::delete("/deleteoprec/{id}", [OprecController::class, "hapus"]);
+
+
+//TampilPengurus
+Route::get('/pengurus', [LandingPengurusController::class, "home"])->middleware('auth');
+Route::get('/logout', [LandingPengurusController::class, "logout"]);
+Route::get('/visidanmisi', [LandingPengurusController::class, "visidanmisi"]);
+Route::get('/strukturpengurus', [LandingPengurusController::class, "strukturpengurus"]);
+Route::get('/acara/{id}/absensi', [LandingPengurusController::class, "absensi"]);
+Route::get('/acara/{id}/kepanitiaan', [LandingPengurusController::class, "kepanitiaan"]);
+Route::get('/pageacara', [LandingPengurusController::class, "nama_acara"]);
+Route::post('/acara/{id}/kepanitiaan', [LandingPengurusController::class, "submitpanitia"]);
+Route::post('/acara/{id}/absensi', [LandingPengurusController::class, "submitabsen"]);

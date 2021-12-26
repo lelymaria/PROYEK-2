@@ -2,98 +2,97 @@
 @section('content')
 @include('layouts.navbar')
 
-    <section class="py-2">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-6">
-                            <div class="text-center mb-5">
-                                <h1 class="fw-bolder">KEPENGURUSAN 2021</h1></h1>
-                                <p class="lead fw-normal text-muted mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, nisi?</p>
-                            </div>
-                        </div>
-                    </div>
+<section class="py-2">
+    <div class="container px-5 my-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center mb-5">
+                    <h1 class="fw-bolder">STRUKTUR KEPENGURUSAN</h1>
+                    </h1>
+                    <p class="lead fw-normal text-muted mb-0">Kepengurusan UKM SEBURA Tahun 2021/2022</p>
                 </div>
-    </section>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-    <!-- Team members section-->
-            <section class="py-5 bg-light">
-                <div class="container px-5 my-5">
-                    <div class="text-center">
-                        <h2 class="fw-bolder">BPH SEBURA</h2>
-                        <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
-                    </div>
-                    <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                        <div class="col mb-5 mb-5 mb-sm-0">
-                            <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class=" fw-bolder">Toribio Nerthus</h5>
-                                <div class="fst-italic text-muted">Operations Manager</div>
-                            </div>
-                        </div>
-                        <div class="col mb-5">
-                            <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class="fw-bolder">Malvina Cilla</h5>
-                                <div class="fst-italic text-muted">CTO</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                        <div class="col mb-5 mb-5 mb-sm-0">
-                            <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class=" fw-bolder">Toribio Nerthus</h5>
-                                <div class="fst-italic text-muted">Operations Manager</div>
-                            </div>
-                        </div>
-                        <div class="col mb-5 mb-5 mb-sm-0">
-                            <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class=" fw-bolder">Toribio Nerthus</h5>
-                                <div class="fst-italic text-muted">Operations Manager</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                        <div class="col mb-5 mb-5 mb-sm-0">
-                            <div class="text-center">
-                                <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                                <h5 class=" fw-bolder">Toribio Nerthus</h5>
-                                <div class="fst-italic text-muted">Operations Manager</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- About section one-->
-            <section class="py-5 bg-light" id="scroll-target">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <h2 class="fw-bolder">Our founding</h2>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
-                        </div>
-                    </div>
+<!-- Team members section-->
+<section class="py-5 bg-light">
+    <div class="container px-5 my-5">
+        <div class="text-center">
+            <h2 class="fw-bolder">BPH SEBURA</h2>
+        </div>
+        {{-- ketum --}}
+        <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4" src="/storage/data_pengurus/{{ $ketua->gambar }}"
+                        width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $ketua->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $ketua->getjabatan->nama_jabatan }}</div>
                 </div>
-            </section>
-            <!-- About section two-->
-            <section class="py-5">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <h2 class="fw-bolder">Growth &amp; beyond</h2>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </div>
 
+        {{-- waketum --}}
+        <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4"
+                        src="/storage/data_pengurus/{{ $wakil_ketua->gambar }}" width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $wakil_ketua->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $wakil_ketua->getjabatan->nama_jabatan }}</div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        {{-- sekretaris dan bendahara --}}
+        <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4"
+                        src="/storage/data_pengurus/{{ $sekretaris1->gambar }}" width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $sekretaris1->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $sekretaris1->getjabatan->nama_jabatan }}</div>
+                </div>
+            </div>
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4"
+                        src="/storage/data_pengurus/{{ $sekretaris2->gambar }}" width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $sekretaris2->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $sekretaris2->getjabatan->nama_jabatan }}</div>
+                </div>
+            </div>
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4"
+                        src="/storage/data_pengurus/{{ $bendahara->gambar }}" width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $bendahara->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $bendahara->getjabatan->nama_jabatan }}</div>
+                </div>
+            </div>
+        </div>
+
+        {{-- psda
+        <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5 mb-5 mb-sm-0">
+                <div class="text-center">
+                    <img class="img-fluid rounded-circle mb-4 px-4" src="/storage/data_pengurus/{{ $ketua->gambar }}"
+                        width="200" height="200" alt="..." />
+                    <h5 class=" fw-bolder">{{ $ketua->nama }}</h5>
+                    <div class="fst-italic text-muted">{{ $ketua->getjabatan->nama_jabatan }}</div>
+                </div>
+            </div>
+        </div> --}}
+
+</section>
+
+</div>
+</section>
+</main>
 
 @endsection

@@ -21,11 +21,6 @@
     <div class="col-md-11">
         <h1 class="h3 mb-2 text-gray-800">Data User</h1>
     </div>
-    <div class="col-md-1">
-        <a href="/admin/tambahuser" class="btn btn-success">
-            Tambah
-        </a>
-    </div>
 </div>
 
 <br>
@@ -41,7 +36,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Username</th>
+                        <th>Email</th>
                         <th>Role</th>
                         <th>Aksi</th>
 
@@ -52,23 +47,14 @@
                     @foreach($data_user as $user)
                     <tr>
                         <td>{{ ++$no }}</td>
-                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>{{ $user->roled->role_name }}</td>
                         <td class="d-flex">
                             <form method="POST" action="{{ url('deleteuser') }}/{{ $user->id }}">
                                 <a href="{{ url('/admin/edituser') }}/{{ $user->id }}" class="btn btn-warning btn-sm">
-                                    Edit
+                                    <i style="font-size:12px" class="fa">&#xf044;</i>
                                 </a>
-                                @csrf
-                                @method('DELETE')
-                                <button onclick="return confirm('Yakin ? Ingin Menghapus Data Ini ?')" type="submit"
-                                    class=" btn-danger btn-sm">
-                                    Hapus
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                                @endforeach
                 </tbody>
             </table>
         </div>

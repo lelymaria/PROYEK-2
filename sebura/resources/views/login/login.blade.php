@@ -12,8 +12,8 @@
             <h3 class="signin-text mb-3"> Sign In</h3>
             <form action="/login" method="POST">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>

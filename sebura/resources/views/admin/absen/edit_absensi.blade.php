@@ -15,6 +15,7 @@
     <div class="card-body">
         <form action="{{ url('/admin/simpanabsen') }}" method="post">
             @csrf
+            <input type='hidden' name='id' value='{{$data->id}}' />
             <div class="form-group">
                 <label for=""> Nama Pengurus : </label>
                 <select name="pengurus" id="pengurus">

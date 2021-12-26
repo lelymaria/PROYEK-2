@@ -43,6 +43,23 @@
                 <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama">
             </div>
             <div class="form-group">
+                <label for=""> Email </label>
+                <input type="text" class="form-control" placeholder="Masukkan Email" name="email">
+            </div>
+            <div class="form-group">
+                <label for=""> Password </label>
+                <input type="text" class="form-control" placeholder="Masukkan Password" name="password">
+            </div>
+            <div class="form-group">
+                <label for=""> Role : </label>
+                <select name="role" id="role">
+                    <option value="">Belum Ada Data Role</option>
+                    @foreach ($roles as $r)
+                    <option value="{{ $r->id }}"> {{ $r->role_name }} </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
                 <label for=""> Jabatan : </label>
                 <select name="jabatan" id="jabatan">
                     <option value="">Belum Ada Data Jabatan</option>

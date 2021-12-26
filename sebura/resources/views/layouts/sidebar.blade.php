@@ -6,7 +6,10 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SEBURA Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">@if(auth()->user() !== null)
+            <p class="text-white mt-2 me-3">Hallo, {{ auth()->user()->nama }}</p>
+            @endif
+        </div>
     </a>
 
     <!-- Divider -->
@@ -57,7 +60,7 @@
                 <a class="collapse-item" href="/admin/jabatan">Jabatan</a>
                 <a class="collapse-item" href="/admin/prodi">Prodi</a>
                 <a class="collapse-item" href="/admin/jurusan">Jurusan</a>
-                <a class="collapse-item" href="">y</a></a>
+                <a class="collapse-item" href="/admin/ketpanitia">Ket Panitia</a></a>
             </div>
         </div>
     </li>
@@ -78,11 +81,6 @@
         <a class="nav-link" href="/admin/oprec">
             <i class="fas fa-fw fa-table"></i>
             <span>Openrecruitmen</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/admin/event">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Event</span></a>
     </li>
 
     <!-- Divider -->

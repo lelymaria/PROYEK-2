@@ -13,14 +13,16 @@
     </aside>
 </div>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
-        <div class="col-12 text-center"><h1>VISI</h1></div>
-        <div class="col-6"><img src="" alt=""></div>
-        <div class="col-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas quis vero illum, praesentium harum esse quod! Cupiditate qui corrupti quam ipsa deserunt quasi reiciendis adipisci iusto expedita? Labore, commodi repellendus! Facilis dolor beatae vel dignissimos!</div>
+        <div class="col-12 text-center">
+            <h1>VISI</h1>
+        </div>
+        <center>"Mewujudkan SEBURA Menjadi UKM Yang Kompetitif, Kreatif, dan Meningkatkan Minat Bakat Pada Kesenian"
+        </center>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-12 text-center m-3">
             <h1>MISI</h1>
         </div>
@@ -30,33 +32,24 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <p class="card-text center">1. "Kompetitif dengan cara menggunakan sarana prasarana teknologi yang
+                        sudah ada dalam kampus".</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <p class="card-text center">2. "Kreatif dalam hal berkarya dengan mengurangi rasa malu dalam
+                        berpendapat".</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <p class="card-text center">3. "Meningkatkan minat dan bakat dalam seni untuk tercapainya tujuan
+                        kompetitif dab kreatif dalam UKM SEBURA POLINDRA".</p>
                 </div>
             </div>
         </div>

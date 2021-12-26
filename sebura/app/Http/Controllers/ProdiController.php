@@ -7,36 +7,42 @@ use App\Models\Prodi;
 
 class ProdiController extends Controller
 {
-    public function prodi(){
+    public function prodi()
+    {
         $prodi = [
             "data_prodi" => Prodi::all()
         ];
-        return view('admin.prodi', $prodi);
+        return view('admin.prodi.prodi', $prodi);
     }
 
-    public function tambahprodi(){
-        return view('admin.tambahprodi');
+    public function tambahprodi()
+    {
+        return view('admin.prodi.tambahprodi');
     }
 
-    public function tambahpro(Request $request){
+    public function tambahpro(Request $request)
+    {
         Prodi::create(['nama_prodi' => $request->nama]);
-        return redirect("/admin/prodi")->with('success','Post add successfully');
+        return redirect("/admin/prodi")->with('success', 'Post add successfully');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Prodi::where("id", $id)->delete();
-        return redirect('admin/prodi')->with('success',"<script>alert('Post deleted successfully')</script>");
+        return redirect('admin/prodi')->with('success', "<script>alert('Post deleted successfully')</script>");
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
         $data = [
             "data_prodi" => Prodi::where("id", $id)->first(),
         ];
-        return view("admin.edit_prodi", $data);
+        return view("admin.prodi.edit_prodi", $data);
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         Prodi::where("id", $request->id)->update([
             "nama_prodi" => $request->nama_prodi
         ]);

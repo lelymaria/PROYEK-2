@@ -19,15 +19,10 @@
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Data Open Recruitmen</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official
-        DataTables documentation</a>.</p>
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Open Recruitmen</h6>
-    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -39,6 +34,7 @@
                         <th>No. WhatsApp</th>
                         <th>Email</th>
                         <th>Prodi</th>
+                        <th>Gambar</th>
                         <th>Aksi</th>
 
                     </tr>
@@ -47,74 +43,63 @@
 
                 </tfoot>
                 <tbody>
+                    <?php $no=1; ?>
+                    @foreach ($data as $item)
                     <tr>
-                        <td>1</td>
-                        <td>Bpk Wardika</td>
-                        <td>1934567</td>
-                        <td>08986543246</td>
-                        <td>bpkwardika@gmail.com</td>
-                        <td>Teknik Mesin</td>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->nim }}</td>
+                        <td>{{ $item->no_telp }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->jurusan }}</td>
+                        <td><img src="/storage/oprec/{!! $item->gambar !!}" alt="{!! $item->nama !!}"
+                                class="img-responsive" width="75" title="{!! $item->nama !!}"></td>
                         <td>
-                            <a href="" class="btn btn-success">
-                                Terima
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                Tidak
-                            </a>
+                            <?php
+                                if ($item->diterima==1){
+                                    ?>
+                            <div class='badge badge-success'><i>Sudah diterima</i></div>
+                            <form action="/deleteoprec/{{ $item->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Yakin ? Ingin Menghapus Data Ini ?')" type="submit"
+                                    class=" btn-danger btn-sm">
+                                    Hapus
+                                </button>
+                            </form>
+                            <?php
+                            }else if ($item->ditolak==2){ ?>
+                            <div class="badge badge-danger"><i>Ditolak</i></div>
+                            <form action="/deleteoprec/{{ $item->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('Yakin ? Ingin Menghapus Data Ini ?')" type="submit"
+                                    class=" btn-danger btn-sm">
+                                    Hapus
+                                </button>
+                            </form>
+                            <?php } else {
+                                ?>
+                            <form action="/oprecditerima/{{ $item->id }}/{{ $item->no_telp }}" method="POST"
+                                target="_blank">
+                                @csrf
+                                <button class="btn btn-success">
+                                    Terima
+                                </button>
+                            </form>
+                            <form action="/oprecditolak/{{ $item->id }}/{{ $item->no_telp }}" method="POST"
+                                target="_blank">
+                                @csrf
+                                <button class=" btn btn-danger">
+                                    Tidak
+                                </button>
+                            </form>
+                            <?php
+                                }
+                            ?>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>Bpk Wardika</td>
-                        <td>1934567</td>
-                        <td>08986543246</td>
-                        <td>bpkwardika@gmail.com</td>
-                        <td>Teknik Mesin</td>
-                        <td>
-                            <a href="" class="btn btn-success">
-                                Terima
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                Tidak
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>3</td>
-                        <td>Bpk Wardika</td>
-                        <td>1934567</td>
-                        <td>08986543246</td>
-                        <td>bpkwardika@gmail.com</td>
-                        <td>Teknik Mesin</td>
-                        <td>
-                            <a href="" class="btn btn-success">
-                                Terima
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                Tidak
-                            </a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>4</td>
-                        <td>Bpk Wardika</td>
-                        <td>1934567</td>
-                        <td>08986543246</td>
-                        <td>bpkwardika@gmail.com</td>
-                        <td>Teknik Mesin</td>
-                        <td>
-                            <a href="" class="btn btn-success">
-                                Terima
-                            </a>
-                            <a href="" class="btn btn-danger">
-                                Tidak
-                            </a>
-                        </td>
-                    </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>

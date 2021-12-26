@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
-use App\Models\Login;
+use App\Models\DataPengurus;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,12 +14,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
- public function data()
+    public function data()
     {
         $data = [
-            "data_user" => Login::all()
+            "data_user" => DataPengurus::all()
         ];
-        return view("admin.datauser", $data);
+        return view("admin.user.datauser", $data);
     }
 
 
@@ -41,18 +42,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-    $request->validate([
-        'username' => 'required',
-        'password' => "required",
-        'role'=> 'required'
-    ]);
+        $request->validate([
+            'email' => 'required',
+            'password' => "required",
+            'role' => 'required'
+        ]);
 
-    Login::create([
-        'username' => $request->username,
-        'password' => bcrypt($request->password),
-        'role' => $request->role
-    ]);
-    return redirect("admin/datauser")->with('success','Post updated successfully');
+        DataPengurus::create([
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => $request->role
+        ]);
+        return redirect("admin/datauser")->with('success', 'Post updated successfully');
     }
 
     /**
@@ -75,9 +76,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = [
-            "edit" => Login::where("id", $id)->first()
+            "edit" => DataPengurus::findOrFail($id)
         ];
-        return view("admin.edituser", $data);
+        return view("admin.user.edituser", $data);
     }
 
     /**
@@ -89,9 +90,9 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        Login::where("id", $request->id)->update([
-            "username" => $request->username,
-            "password" => $request->password,
+        DataPengurus::where("id", $request->id)->update([
+            "email" => $request->email,
+            "password" => bcrypt($request->password),
             "role" => $request->role
         ]);
 

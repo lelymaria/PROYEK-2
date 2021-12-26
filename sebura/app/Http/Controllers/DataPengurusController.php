@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Jabatan;
 use App\Models\Prodi;
 use App\Models\Divisi;
+use App\Models\Role;
 
 class DataPengurusController extends Controller
 {
     public function index()
     {
         $datapengurus = DataPengurus::all();
-        return view('admin.kepengurusan', compact('datapengurus'));
+        return view('admin.pengurus.kepengurusan', compact('datapengurus'));
     }
 
     public function form_tambah_pengurus()
@@ -21,7 +22,8 @@ class DataPengurusController extends Controller
         $jabatan = Jabatan::all();
         $prodi = Prodi::all();
         $divisi = Divisi::all();
-        return view('/admin/form_tambah_pengurus', compact('jabatan', 'prodi', 'divisi'));
+        $roles = Role::all();
+        return view('admin.pengurus.form_tambah_pengurus', compact('jabatan', 'prodi', 'divisi', 'roles'));
     }
 
     public function tambah(Request $request)
@@ -34,6 +36,9 @@ class DataPengurusController extends Controller
             if ($request->file('gambar')->isValid()) {
                 DataPengurus::create([
                     "nama" => $request->nama,
+                    "email" => $request->email,
+                    "password" => bcrypt($request->password),
+                    "role" => $request->role,
                     "divisi_sebura" => $request->divisi,
                     "jabatan" => $request->jabatan,
                     "prodi" => $request->prodi,
@@ -63,8 +68,9 @@ class DataPengurusController extends Controller
         $jabatan = Jabatan::all();
         $prodi = Prodi::all();
         $divisi = Divisi::all();
+
         // return $data;
-        return view('admin.edit_pengurus')->with([
+        return view('admin.pengurus.edit_pengurus')->with([
             'data' => $data,
             'jabatan' => $jabatan,
             'prodi' => $prodi,
